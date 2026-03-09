@@ -10,7 +10,7 @@ export async function getMarkdownContent(filePath: string) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(gfm).use(html).process(content);
+  const processedContent = await remark().use(gfm).use(html, { sanitize: false }).process(content);
   const contentHtml = processedContent.toString();
 
   return {

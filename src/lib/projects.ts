@@ -58,7 +58,7 @@ export async function getProjectBySlug(slug: string, locale?: Locale): Promise<P
     if (fs.existsSync(zhPath)) {
       const fileContents = fs.readFileSync(zhPath, "utf8");
       const { data, content } = matter(fileContents);
-      const processedContent = await remark().use(gfm).use(html).process(content);
+      const processedContent = await remark().use(gfm).use(html, { sanitize: false }).process(content);
       return {
         slug,
         frontmatter: data as ProjectFrontmatter,
@@ -70,7 +70,7 @@ export async function getProjectBySlug(slug: string, locale?: Locale): Promise<P
   const fullPath = path.join(projectsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-  const processedContent = await remark().use(gfm).use(html).process(content);
+  const processedContent = await remark().use(gfm).use(html, { sanitize: false }).process(content);
 
   return {
     slug,
