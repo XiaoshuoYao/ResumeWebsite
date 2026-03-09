@@ -18,7 +18,7 @@ export default function HomeContent({ featuredProjects }: HomeContentProps) {
       <section className="py-16 text-center">
         <h1 className="text-5xl font-bold tracking-tight">
           {t("home.greeting")}{" "}
-          <span className="text-blue-600 dark:text-blue-400">Xiaoshuo Yao</span>
+          <span className="text-blue-600 dark:text-blue-400">姚晓硕 Xiaoshuo Yao</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
           {t("home.tagline")}

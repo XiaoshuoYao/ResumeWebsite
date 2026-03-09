@@ -8,8 +8,8 @@ const translations = {
       projects: "Projects",
     },
     home: {
-      greeting: "Hi, I'm",
-      tagline: "Software Engineer passionate about building great products.",
+      greeting: "",
+      tagline: "Technical Designer, Engineer, and more",
       viewResume: "View Resume",
       seeProjects: "See Projects",
       featuredProjects: "Featured Projects",
@@ -35,8 +35,8 @@ const translations = {
       projects: "\u9879\u76ee",
     },
     home: {
-      greeting: "\u4f60\u597d\uff0c\u6211\u662f",
-      tagline: "\u70ed\u7231\u6784\u5efa\u4f18\u79c0\u4ea7\u54c1\u7684\u8f6f\u4ef6\u5de5\u7a0b\u5e08\u3002",
+      greeting: "",
+      tagline: "技术策划，工程师，也许还能做更多",
       viewResume: "\u67e5\u770b\u7b80\u5386",
       seeProjects: "\u67e5\u770b\u9879\u76ee",
       featuredProjects: "\u7cbe\u9009\u9879\u76ee",
