@@ -13,8 +13,6 @@ date: 2025-06-01
 
 A multiplayer spaceship building and combat game built with UE5.7. As the technical designer, I was responsible for designing and implementing the modular ship assembly system — from choosing the right data structure to defining the build workflow that works across networked clients.
 
-**Project Scale**: 46,582 lines of C++ across 296 files, 20 independent UE Modules.
-
 ---
 
 ## Modular Ship System — Graph-Based Design

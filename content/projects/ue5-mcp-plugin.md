@@ -13,8 +13,6 @@ date: 2025-08-01
 
 A plugin embedded in the UE5 Editor that implements a **Model Context Protocol (MCP) server** via local HTTP, exposing **68 tool interfaces across 12 functional domains**. External AI agents can query and manipulate engine state in real-time — including reflection information, asset management, blueprint editing, material analysis, and DataTable/DataAsset CRUD operations.
 
-**Project Scale**: 15,000+ lines of C++, 5,900+ lines of JSON Schema definitions.
-
 ---
 
 ## Architecture

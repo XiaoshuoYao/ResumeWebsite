@@ -11,8 +11,6 @@ date: 2025-08-01
 
 嵌入 UE5 Editor 的本地 HTTP 服务插件，基于 **Model Context Protocol (MCP)** 协议，暴露 **68 个工具接口（12 个功能域）**。外部 AI Agent 可通过标准协议实时查询和操控引擎状态——包括反射信息、资产管理、蓝图编辑、材质分析、DataTable/DataAsset CRUD 等编辑器功能。
 
-**项目规模**：15,000+ 行 C++ 实现，5,900+ 行 JSON Schema 定义。
-
 ---
 
 ## 分层架构

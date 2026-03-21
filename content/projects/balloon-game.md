@@ -13,8 +13,6 @@ date: 2025-03-01
 
 A physics-based balloon control simulation built with Unreal Engine 5.4. As the technical designer, I was responsible for translating game feel concepts into concrete technical solutions — from the core balloon manipulation system to the tutorial flow and UI feedback.
 
-The project uses a **C++ → Blueprint → Lua** three-layer architecture with a central EventHub for cross-system communication.
-
 ---
 
 ## Balloon Game Feel Design
