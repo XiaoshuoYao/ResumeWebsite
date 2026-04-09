@@ -1,17 +1,21 @@
 ---
 title: "Balloon — Physics-Based Balloon Control Game"
 title_zh: "Balloon — 物理气球操控模拟游戏"
-description: "A UE5 physics balloon game — designed and implemented game feel systems, data-driven tutorials, and interactive UI feedback as a technical designer."
-description_zh: "UE5 物理气球操控游戏 — 以技术策划身份设计并实现了手感系统、数据驱动教程和交互式 UI 反馈。"
+description: "A UE5 physics balloon game — designed the core game feel loop (force model, feedback layers, 18-state cursor), data-driven tutorial framework, and interactive UI as game & technical designer."
+description_zh: "UE5 物理气球操控游戏 — 以策划兼技术策划身份设计了核心手感循环（力模型、多层反馈、18 态光标）、数据驱动教程框架和交互式 UI。"
 tech: ["Unreal Engine 5.4", "C++", "Lua", "Blueprint"]
 type: "other"
 featured: true
 date: 2025-03-01
 ---
 
+## Project Video
+
+<iframe width="100%" style="aspect-ratio:16/9; border-radius:8px; margin:1rem 0;" src="https://www.youtube.com/embed/ynDDa8JEogs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Overview
 
-A physics-based balloon control simulation built with Unreal Engine 5.4. As the technical designer, I was responsible for translating game feel concepts into concrete technical solutions — from the core balloon manipulation system to the tutorial flow and UI feedback.
+A physics-based balloon control simulation built with Unreal Engine 5.4. As the **game designer and technical designer**, I owned the full design-to-implementation pipeline: defining how the balloon should *feel* as a design concept, then translating that vision into force models, feedback systems, and interaction frameworks. Every system below started as a design decision before becoming code.
 
 ---
 
@@ -19,11 +23,11 @@ A physics-based balloon control simulation built with Unreal Engine 5.4. As the 
 
 The central design challenge: how to make a balloon feel "alive" and responsive without sacrificing physics authenticity.
 
-**Design Decision — Force-Driven, Not Kinematic**: Instead of directly controlling balloon position, I used continuous attractive forces so the balloon always remains part of the physics world — wind, collisions, and gravity still affect it even while the player is controlling it. This required careful tuning of damping profiles across four interaction states (Released / FollowCamera / Holding / ReleaseClick) to create distinct tactile feels for each.
-
-**Elliptical Constraint Boundary**: Through playtesting, I found players interact forward/backward more than left/right. This led to an asymmetric elliptical constraint rather than a simple circle — a small design insight that significantly improved control intuitiveness.
+**Design Decision — Force-Driven, Not Kinematic**: Instead of directly controlling balloon position, I used continuous attractive forces so the balloon always remains part of the physics world — wind, collisions, and gravity still affect it even while the player is controlling it.
 
 **Multi-Layer Feedback Loop**: Game feel isn't just physics — it's the full sensory chain. I designed a layered feedback system where balloon state drives camera effects (bob, roll, FOV), cursor behavior, Niagara particles, and audio simultaneously, giving each interaction a cohesive feel.
+
+**Design Iteration**: The initial control scheme only supported dragging the rope beneath the balloon, using inertia to pull the whole assembly. Playtesting revealed that long-distance traversal across the map felt slow and fatiguing. Following the project's "lightweight, intuitive control" design guideline, I designed and implemented a second control mode based on mouse swiping — swipe direction and force map directly to the balloon's thrust vector, preserving the physics-driven feel while dramatically improving fluidity for large-scale movement. Playtest validation confirmed a significant improvement in traversal experience.
 
 ---
 
@@ -58,4 +62,4 @@ Designed a hybrid cinematic combining physics simulation with Sequencer — the 
 
 ## Interactive Main Menu
 
-The main menu balloon is physically interactive — players can drag it, and breaking the constraint triggers the game start. This teaches core controls at zero cost before gameplay begins, embodying the principle of "show, don't tell."
+The main menu balloon is physically interactive — players can drag it, and breaking the constraint triggers the game start. This teaches core controls at zero cost before gameplay begins, embodying the design principle of **"show, don't tell"** — a deliberate onboarding design that removes the barrier between menu and gameplay.

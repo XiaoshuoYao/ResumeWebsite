@@ -1,8 +1,8 @@
 ---
 title: "UE5 MCP Editor Plugin"
 title_zh: "UE5 MCP 编辑器插件"
-description: "A Model Context Protocol server plugin for Unreal Engine 5 that exposes 68 tool interfaces across 12 domains, enabling AI agents to query and manipulate engine state via JSON-RPC 2.0."
-description_zh: "为 UE5 编辑器实现的 MCP 服务端插件，通过 JSON-RPC 2.0 协议暴露 68 个工具接口（12 个功能域），使 AI 工具能实时查询与操控引擎状态。"
+description: "A UE5 MCP server plugin (68 tools, 12 domains) — designed the tool taxonomy and API surface to give AI agents first-class access to engine state, then implemented the five-layer architecture with deep reflection integration."
+description_zh: "UE5 MCP 服务端插件（68 个工具，12 个功能域）— 设计了工具分类体系和 API 接口，让 AI Agent 获得对引擎状态的一等访问权；实现了五层架构与深度反射系统集成。"
 tech: ["Unreal Engine 5", "C++", "JSON-RPC 2.0", "MCP"]
 type: "other"
 featured: true
@@ -11,7 +11,9 @@ date: 2025-08-01
 
 ## Overview
 
-A plugin embedded in the UE5 Editor that implements a **Model Context Protocol (MCP) server** via local HTTP, exposing **68 tool interfaces across 12 functional domains**. External AI agents can query and manipulate engine state in real-time — including reflection information, asset management, blueprint editing, material analysis, and DataTable/DataAsset CRUD operations.
+**Design Motivation**: AI coding assistants can read and write source files, but they are blind to the engine runtime — they can't inspect live actors, query asset metadata, or understand blueprint graphs. This plugin bridges that gap by giving AI agents the same level of engine access that a human developer has through the Editor UI.
+
+A plugin embedded in the UE5 Editor that implements a **Model Context Protocol (MCP) server** via local HTTP, exposing **68 tool interfaces across 12 functional domains**. I designed the **tool taxonomy** (how 68 tools are organized into 12 domains that match developer mental models) and the **API contract** (what each tool exposes, at what granularity), then implemented the full stack from HTTP layer to reflection engine.
 
 ---
 

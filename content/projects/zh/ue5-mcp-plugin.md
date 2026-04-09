@@ -1,6 +1,6 @@
 ---
 title: "UE5 MCP 编辑器插件"
-description: "为 UE5 编辑器实现的 MCP 服务端插件，通过 JSON-RPC 2.0 协议暴露 68 个工具接口（12 个功能域），使 AI 工具能实时查询与操控引擎状态。"
+description: "UE5 MCP 服务端插件（68 个工具，12 个功能域）— 设计了工具分类体系和 API 接口，让 AI Agent 获得对引擎状态的一等访问权；实现了五层架构与深度反射系统集成。"
 tech: ["Unreal Engine 5", "C++", "JSON-RPC 2.0", "MCP"]
 type: "other"
 featured: true
@@ -9,7 +9,9 @@ date: 2025-08-01
 
 ## 项目概述
 
-嵌入 UE5 Editor 的本地 HTTP 服务插件，基于 **Model Context Protocol (MCP)** 协议，暴露 **68 个工具接口（12 个功能域）**。外部 AI Agent 可通过标准协议实时查询和操控引擎状态——包括反射信息、资产管理、蓝图编辑、材质分析、DataTable/DataAsset CRUD 等编辑器功能。
+**设计动机**：AI 编程助手可以读写源文件，但对引擎运行时是"盲"的——无法检查 Actor、查询资产元数据、理解蓝图图表。这个插件弥补了这一鸿沟，让 AI Agent 获得与人类开发者在 Editor UI 中相同层级的引擎访问权。
+
+嵌入 UE5 Editor 的本地 HTTP 服务插件，基于 **Model Context Protocol (MCP)** 协议，暴露 **68 个工具接口（12 个功能域）**。设计了**工具分类体系**（68 个工具如何组织为 12 个符合开发者心智模型的功能域）和 **API 契约**（每个工具暴露什么、粒度如何），然后实现了从 HTTP 层到反射引擎的完整技术栈。
 
 ---
 

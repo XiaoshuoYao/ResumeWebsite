@@ -1,17 +1,53 @@
 ---
 title: "BLUE — Multiplayer Spaceship Building & Combat"
 title_zh: "BLUE — 多人太空飞船建造与对战"
-description: "A UE5 multiplayer spaceship building game — designed the modular ship graph system and GAS-based build workflow as a technical designer."
-description_zh: "UE5 多人太空飞船建造对战游戏 — 以技术策划身份设计了模块化飞船图系统和基于 GAS 的建造流程。"
+description: "A UE5 multiplayer sandbox where players modular-build spaceships and fight in 6DoF combat — designed the core gameplay systems (Verb System, Matter System), modular ship graph, and GAS-based build workflow."
+description_zh: "UE5 多人太空飞船建造对战沙盒 — 设计了核心玩法系统（动词系统、物质系统）、模块化飞船图结构和基于 GAS 的建造流程。"
 tech: ["Unreal Engine 5.7", "C++", "GAS", "Multiplayer"]
 type: "other"
 featured: true
 date: 2025-06-01
 ---
 
+## Project Video
+
+<iframe width="100%" style="aspect-ratio:16/9; border-radius:8px; margin:1rem 0;" src="https://www.youtube.com/embed/2S5LEavyU5E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Overview
 
-A multiplayer spaceship building and combat game built with UE5.7. As the technical designer, I was responsible for designing and implementing the modular ship assembly system — from choosing the right data structure to defining the build workflow that works across networked clients.
+BLUE is a **multiplayer sandbox game centered on spaceship engineering and combat**. Players rapidly assemble and iterate ship designs using modular parts in an intuitive building system, then bring them into physics-driven 6DoF space battles. During combat, players can re-enter build mode at any time — salvaging, rebuilding, deploying drones and missiles on the fly — turning every engagement into a live design verification and upgrade cycle.
+
+As the **game designer and technical designer**, I was responsible for both the high-level gameplay system design and the technical implementation — from defining the core combat-building loop to choosing the right data structures and networked workflows.
+
+---
+
+## Core Gameplay Design
+
+### Verb System — Intent-Driven Modular Behaviors
+
+**Design Goal**: Let players create complex emergent behaviors (auto-turrets, tracking weapons, guided missiles) from a small set of simple, composable parts.
+
+The Verb System decomposes ship functionality into atomic **behavior modules** mapped to fundamental actions: **See / Aim / Move / Fire / Detect**. Each module does one thing. Players combine these "verb parts" to produce emergent systems:
+- **See + Aim + Fire** → auto-turret that acquires and engages targets
+- **Detect + Move + Fire** → homing missile
+- **See + Aim** → tracking camera / sensor array
+
+This approach keeps the learning curve low (each part is self-explanatory) while enabling deep combinatorial expression — a hallmark of sandbox design.
+
+### Matter System — Unified Physics Rules
+
+**Design Goal**: Replace abstract HP bars with readable, physical damage propagation that creates natural rock-paper-scissors dynamics.
+
+The Matter System governs all damage and system interactions through **three unified physical domains**:
+- **Kinetic** — structural impact, penetration, fragmentation
+- **Thermal** — heat buildup, radiator management, meltdown cascades
+- **Electromagnetic** — power grids, EMP disruption, sensor interference
+
+### Design Philosophy
+
+The overall experience follows two guiding principles:
+- **Intuition over realism** — physics feel right but don't punish; players grasp systems through play, not manuals
+- **Sandbox over competitive** — encourage unexpected, creative, even absurd ship designs; the fun is in the explosion, the collapse, and the comeback
 
 ---
 
@@ -19,7 +55,7 @@ A multiplayer spaceship building and combat game built with UE5.7. As the techni
 
 **Design Problem**: How to represent a spaceship made of dynamically assembled parts that can be built, rearranged, and broken apart in real-time?
 
-**Why a Graph, Not a Tree**: Parts can connect on multiple faces in many-to-many relationships — a tree can't express this. I chose a **directed graph (DAG)** where vertices are parts and edges are connections. This naturally supports:
+**Why a Graph, Not a Tree**: Parts can connect on multiple faces in many-to-many relationships — a tree can't express this. I used a graph (DAG) where vertices are parts and edges are connections. This naturally supports:
 - Cyclic connections and branching structures
 - Automatic fracture detection when a part is destroyed (via connected component analysis — if the graph splits into disconnected subgraphs, the ship physically separates)
 - Port-level connections (each part face has named ports for precise attachment)

@@ -72,6 +72,16 @@ export default function ProjectDetailContent({
             {t("project.liveDemo")}
           </a>
         )}
+        {frontmatter.download && (
+          <a
+            href={frontmatter.download}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-400"
+          >
+            {t("project.download")}
+          </a>
+        )}
       </div>
 
       {frontmatter.type === "unity" && frontmatter.unityBuild && (

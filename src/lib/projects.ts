@@ -16,6 +16,7 @@ export interface ProjectFrontmatter {
   tech: string[];
   github?: string;
   demo?: string;
+  download?: string;
   image?: string;
   type: "web" | "unity" | "cli" | "other";
   unityBuild?: string;

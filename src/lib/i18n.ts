@@ -23,6 +23,7 @@ const translations = {
       backToProjects: "\u2190 Back to Projects",
       githubRepo: "GitHub Repo",
       liveDemo: "Live Demo",
+      download: "Download",
     },
     footer: {
       rights: "All rights reserved.",
@@ -50,6 +51,7 @@ const translations = {
       backToProjects: "\u2190 \u8fd4\u56de\u9879\u76ee\u5217\u8868",
       githubRepo: "GitHub \u4ed3\u5e93",
       liveDemo: "\u5728\u7ebf\u6f14\u793a",
+      download: "\u4e0b\u8f7d",
     },
     footer: {
       rights: "\u4fdd\u7559\u6240\u6709\u6743\u5229\u3002",
